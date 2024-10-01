@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Цикл for in</title>
+</head>
+<body>
+
+
+<script>
+
+<!--    Асоціативний цікл-->
+
+    // проводяться асоціації
+    // id асоційоване значення 1
+    // name асоційоване значення Norman
+    // status  асоційоване значення true
+
+    let user ={
+        id:1,
+        name:'Norman',
+        status: true,
+        skills:[]
+    }
+    for (let i in user){
+        console.log(i,user[i])
+    }
+
+
+    let users = [
+        {name:'Maria', age: 23, status:false},
+        {name:'Max', age: 34, status:true},
+        {name:'Mile', age: 50, status:true},
+        {name:'Alex', age: 16, status:false},
+        {name:'Oleg', age: 12, status:true},
+        {name:'Nike', age: 56, status:false},
+        {name:'Sony', age: 23, status:false},
+        {name:'Kiril', age: 45, status:true},
+        {name:'Roman', age: 31, status:true},
+        {name:'Norman', age: 21, status:false},
+        {name:'Julia', age: 28, status:true}
+    ];
+
+for (const user1 of users) {
+    for (const user1Key in user1) {
+        console.log(user1Key, user1[user1Key])
+    }
+    console.log(' ')
+
+}
+
+</script>
+</body>
+</html>

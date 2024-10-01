@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects</title>
+</head>
+<body>
+
+<script>
+
+<!--Створення об'єкту-->
+
+let user1 = {
+    id: 1,
+    name : 'Max',
+    age: 23,
+    skill: ['JS', 'Java', 'html', 'css'],
+    wife:{
+        name: 'Maria',
+        age:28
+    }
+}
+console.log(user1);
+
+
+// Внутрішні об'єкти
+
+// звернення до користувача та витягання інформації
+
+console.log(user1.id);  /*однаковий пошук*/
+console.log(user1['id']); /*--------*/
+console.log(user1.skill[1]);
+console.log(user1.wife.name);
+console.log(user1.wife.age);
+
+
+
+// Модифікація об'єктів
+
+let user = {
+    id: 2,
+    name: 'Norman'
+}
+
+// додавання характеристик
+user.age = 35
+user['status'] = false
+
+console.log(user);
+
+// видалення характеристик
+delete user.age
+console.log(user);
+
+
+
+// Примітивні та референціальні типи данних
+
+let a = 100
+let b = a
+b = b + 10
+
+console.log(a); /*перемінна на не змінилася*/
+console.log(b);
+
+
+let user2 = {name:'Alex'}
+let user3 = user2
+user3.age = 31
+
+console.log(user3);
+console.log(user2);
+
+
+</script>
+
+</body>
+</html>

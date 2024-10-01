@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrays</title>
+</head>
+<body>
+
+
+<script>
+
+    let arr = [123, 23, 34, -32, 345, 43]
+    console.log(arr);
+
+//      звертаємось до кожного окремо за індексом
+    console.log(arr[0]);
+    console.log(arr[1]);
+    console.log(arr[2]);
+    console.log(arr[3]);
+    console.log(arr.length);
+
+// перевизначення значення елементу
+
+    arr[0] = 'new value'
+    console.log(arr);
+    console.log(arr[0]);
+
+//     додаємо елемент в масив
+    arr[6] = true
+    arr[7] = 'new value'
+    console.log(arr);
+
+//     додаємо елемент в кінець масиву
+
+    arr[arr.length] = 12333
+    console.log(arr);
+
+
+
+//     Багатовимірні масиви
+
+    let arr1 = [
+        [11, 22, 33,],
+        [],
+        []
+    ]
+    console.log(arr1);
+    let innerArr0 = arr1[0]
+    console.log(arr1[0][2]);
+    console.log(innerArr0);
+    console.log(innerArr0[1]);
+
+</script>
+</body>
+</html>
