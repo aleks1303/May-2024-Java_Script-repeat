@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Замикання</title>
+</head>
+<body>
+
+
+<script>
+
+<!--    Замикання це можливість функції тримати посилання на якійсь внутрішній об'єкт-->
+
+function asd() {
+    let x = 10;
+    function inner (){
+        return ++x
+    }return inner;
+}
+let foo = asd()
+console.log(asd()())
+console.log(foo())
+console.log(foo())
+console.log(foo())
+console.log(foo())
+console.log(foo())
+console.log(foo())
+
+// function inner замкнута в функції asd де x = 10
+// і при викликанні функції asd (foo) і так як f inner додає плюс кожний виклик додає + 1
+
+
+
+// ще приклад:
+
+let user = {
+    name: 'Max',
+    age: 31
+}
+// замикання існують, щоб не допустити таких речей, щоб ніхто не міг змінити вік на від'ємне або взагалі
+user.age = -3333
+console.log(user)
+
+// рішення
+
+let userBuilder = function (name, age){
+    let user = {name, age};
+    return {
+        getName(){
+        return user.name;
+        },
+        getAge(){
+        return user.age
+        },
+        setAge(age){
+            if(age > 0){
+                user.age = age
+            }
+
+        }
+    }
+}
+let builder = userBuilder('Oleg', 34);
+console.log(builder)
+console.log(builder.getAge());
+console.log(builder.getName());
+builder.setAge(13)
+console.log(builder.getAge());
+
+</script>
+
+</body>
+</html>

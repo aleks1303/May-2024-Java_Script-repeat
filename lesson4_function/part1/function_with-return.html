@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function | with return</title>
+</head>
+<body>
+
+<script>
+
+<!--    Функція з поверненням-->
+//Приклад якщо потрібно порахувати суму двох чисел 100 разів
+// і використовувати результати цих обчислювать
+
+// let r1 = 20+30
+// let r2 = 230+30
+
+// створюємо функцію
+// передаємо в аргументи a i b, як два числа
+function calc (a, b) {
+    let result = a + b;
+//     без return результат не виводиться так як функція локальна і нічого далі не передає
+//     необхідно вказати, що вона буде повертати
+    return result;
+}
+
+let calc1 = calc(20,  30);
+let calc2 = calc(200, 30);
+console.log(calc1,calc2)
+
+
+function foo (a, b) {
+let res = a + b;
+    return res;
+}
+
+let foo1 = foo (23 , 34);
+console.log(foo1)
+
+// Правило return
+// У випадку якщо функція відпрацювала вам потрібно
+// результат її відпрацювання використовувати
+// то необхідно використовувати return
+
+// a якщо необхідно просто щось вивести і не використовувати результат
+// функції return не потрібний
+
+
+// Ще приклад, вираховуємо з певної суми пдв та військовий збір
+
+
+// function  tax (sum)  {
+//     let  pdv = sum / 100 * 20
+//     let warTax = sum / 100 * 5
+//     return sum - pdv - warTax
+//
+// }
+// let number = tax(15000)
+// // let number = tax(prompt());
+// console.log(number)
+
+// a також функція у функції
+function percentage(sum, per){
+    return sum / 100 * per
+}
+
+// function  tax (sum)  {
+//     let  pdv = percentage(sum, 20)
+//     let warTax = percentage(sum, 1.5)
+//     return sum - pdv - warTax
+//
+// }
+
+// зменшення коду
+function  tax (sum)  {
+    return sum - percentage(sum, 20) - percentage(sum, 1.5)
+
+}
+
+let number = tax(150000)
+// let number = tax(prompt());
+console.log(number)
+
+
+// це для мене
+// function sumRoad(distance){
+//     let useGas = distance / 100 * 6
+//     let sumMoney = useGas * 52.99
+//     return sumMoney
+//
+// }
+// let sumMoneyRoad = sumRoad(prompt());
+// console.log(sumMoneyRoad)
+
+
+
+// ще приклади з функціями
+
+function userFilter (users){
+    let filteredUser = []
+    for (const user of users) {
+        if(user.age > 30){
+            filteredUser.push(user)
+        }
+    }return filteredUser
+}
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
+let filter = userFilter(users);
+console.log(filter)
+
+
+function countName(users){
+    let numberName = []
+    for (const user of users) {
+        if(user.name.length === 4){
+            numberName.push(user)
+        }
+
+    }return numberName
+}
+
+
+let countName1 = countName(users);
+console.log(countName1)
+
+
+function userTrue(users){
+    let userOfTrue = []
+    for (const user of users) {
+        if(user.status === true){
+            userOfTrue.push(user)
+        }
+    }return userOfTrue
+}
+let userTrue1 = userTrue(users);
+console.log(userTrue1)
+
+
+</script>
+
+
+</body>
+</html>

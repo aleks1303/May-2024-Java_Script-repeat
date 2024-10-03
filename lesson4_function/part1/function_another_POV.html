@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>functions | POV</title>
+</head>
+<body>
+
+
+<script>
+
+<!--  Для чого потрібні функції  -->
+
+// створюємо users
+
+let user1 = {
+    id:1,
+    name:'Max',
+    age: 35,
+    status: true
+}
+let user2 = {
+    id:2,
+    name:'Alex',
+    age: 34,
+    status: true
+}
+let user3 = {
+    id:3,
+    name:'Norman',
+    age: 36,
+    status: false
+}
+let user4 = {
+    id:4,
+    name:'Mile',
+    age: 45,
+    status: true
+}
+// щоб створити 4 users необхідно було 24 рядки коду, а якщо users 500, як тоді???
+
+// створюємо для цього функцію userFactory (фабрична функція, яка створює users)
+// аргументи передаємо у значення знінної, а потім викликаємо функцію і передаємо значення, потім присвоюємо певній змінній
+function userFactory(id, name, age, status){
+
+    let user = {
+        id:id,
+        name:name,
+        age: age,
+        status: status
+    }
+    // повертає значення, щоб десь ще використати
+    return user
+}
+let u1 = userFactory(1, 'Alina', 34, true);
+let u2 = userFactory(2, 'Max', 23, true);
+let u3 = userFactory(3, 'Mile', 34, false);
+let u4 = userFactory(4, 'Kiril', 34, false);
+console.log(u1)
+console.log(u2)
+console.log(u3)
+console.log(u4)
+
+
+</script>
+
+</body>
+</html>

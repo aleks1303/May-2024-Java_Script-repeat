@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function | arguments</title>
+</head>
+<body>
+
+<script>
+
+<!--    Змінна arguments у функціях-->
+
+// як вирішити питання коли ми хочему мати функції з однаковими назвами
+// але з різної кількість аргументів
+// Наприклад
+
+function calc (a,b){
+    return a + b
+}
+
+function calc (a, b, c) {
+    return a + b + c
+}
+// бачить тільки останню декларацію
+
+console.log(calc(34, 6));
+
+// це вирішуеться за допомогою спеціальної змінної та перевірок
+
+function foobar(){
+    console.log(arguments)
+    if(arguments.length === 2){
+        let sum = arguments[0] + arguments[1]
+        return sum
+    }else if ( arguments.length === 3){
+        return arguments[0] + arguments[1] + arguments[2]
+    }
+}
+
+console.log(foobar(12, 22, 100))
+
+</script>
+
+</body>
+</html>
