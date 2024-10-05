@@ -5,17 +5,99 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Recursion</title>
+    <title>Рекурсія</title>
 </head>
 <body>
 
 <script>
 
+function foo(){
+    console.log('foo')
+    // foo()
+
+    // це називається рекурсія, якщо таку функцію виконати тоді зависне браузер
+    // це потужна, але небезпечна штука
+    // рекурсією можна замінити цикл
+
+}
+foo()
+
+// Приклад рекурсії
+
+function iterator (arr, i){
+    console.log(arr[i]);
+    i++;
+    if(i < arr.length){
+        iterator(arr, i)
+    }
+
+}
+
+iterator([11,22,33,44,55,66],0)
+
+// 36 передаємо аргументи в arr та 0 - index масиву ( тобто з першого )
+// 31 викликаємо функцію в середині функції (рекурсія)
+// 30 робимо умову, щоб рекурсія не працювала постійно, тобто обмеження роботи рекурсії
+// 29 збільшуємо на 1 при кожному виклику функції і проходимо по всьому масиву
+// 28 виводимо в консоль всі елементи масиву
 
 
 
+// Спроба самостійна
+
+let users = [
+    {name:'Maria', age: 23, status:false},
+    {name:'Max', age: 34, status:true},
+    {name:'Mile', age: 50, status:true},
+    {name:'Alex', age: 16, status:false},
+    {name:'Oleg', age: 12, status:true},
+    {name:'Nike', age: 56, status:false},
+    {name:'Sony', age: 23, status:false},
+    {name:'Kiril', age: 45, status:true},
+    {name:'Roman', age: 31, status:true},
+    {name:'Norman', age: 21, status:false},
+    {name:'Julia', age: 28, status:true}
+];
+
+function userIterator (users, i){
+    console.log(users[i].name, users[i].age)
+    i++
+    if(i < users.length){
+        userIterator(users,i)
+    }
+}
+userIterator(users, 0)
 
 
+// Приклад через рекурсію виведення багатовимірних масивів
+// або тих які ми не знаємо на скільки масив багатовимірний
+
+let arr = [22,33,44,[55,66],[77, 88,[99, 100]]];
+let innerArray = []
+
+function flatter (array) {
+    for (const item of array) {
+        if(Array.isArray(item)){
+            flatter(item)
+        }else{
+            innerArray.push(item)
+        }
+
+    }
+}
+flatter(arr)
+console.log(innerArray)
+
+// 78 створюємо функцію передаємо масив
+// 79 ітеруємо цей масив
+// 80 якщо на шляху ітерації, ми зустрічаєм  масив (чи є масив масивом) ми передаємо його на
+// початок в 78 рядок і ітеруємо і якщо він не масив тобто
+// 82 в іншому випадку якщо елемент не масив штовхаємо (додаємо) у змінну innerArray
+// таким чином ми проходимо по всьому масиву скільки б він не був багатовимірним і
+// розкладаємо на елементи
+
+// !!!!! Попередження !!!!!
+// Рекурсія може вальнути Ваш браузер дуже швидко, якщо не правильно застосовувати.
 
 
 

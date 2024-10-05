@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Обробка помилок</title>
+</head>
+<body>
+
+<script>
+
+
+
+<!--Обробка помилок-->
+
+//    let a = '' ;
+//    let a = '' ;
+// //    однакові
+// SyntaxError
+
+// console.log(a)
+// виклик неіснуючої змінної
+// ReferenceError
+
+
+// let user = {}
+// user.xxx()
+// TypeError
+// певна характеристика не являється функцією
+
+
+// !!! Під час помилки далі код не працює, він зупиняється
+
+console.log('start')
+
+// console.log(a) /*це помилка */
+// як захистити
+// помістити потенційну помилку у try
+try{
+    console.log(e) /*це помилка */
+}
+// якщо помилка стається catch ловить її виводить, але код далі продовжує виконуватися
+catch (e) {
+    console.error(e)
+} finally {
+    console.log('finally')
+}
+console.log('end')
+
+// Приклад функції з калькулятором
+
+function calc (a, b) {
+    // щоб в b або a не передали (0) робимо перевірку
+    if(b === 0) {
+        throw new Error('b is 0')
+    }/*створюємо помилку, тобто попередження*/
+
+    return a / b
+}
+// як її обробляти вирішує кожен сам try-catch чи try - finally
+// код без помилок не можливий
+
+console.log(calc(100, 0)); /* результат виводить infinity*/
+
+
+</script>
+
+</body>
+</html>

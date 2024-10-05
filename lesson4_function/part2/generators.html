@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Генератори</title>
+</head>
+<body>
+
+
+<script>
+
+
+<!--    Генератори - це функції які мають множинний return -->
+
+function *foo (){
+    yield 100;
+    yield 200;
+    yield 300;
+}
+let fooGenerator = foo()
+console.log(fooGenerator.next())
+console.log(fooGenerator.next())
+console.log(fooGenerator.next())
+console.log(fooGenerator.next())
+
+
+// Приклад функції генератора, яка роздає карти
+
+
+
+
+function *cardHolder (){
+    let cards = [
+        {value: 6, suite:'diamond'},
+        {value: 7, suite: 'spade'},
+        {value: 8, suite:'diamond'},
+        {value: 9, suite: 'spade'},
+        {value: 10, suite: 'spade'}
+    ]
+    for (const card of cards) {
+        yield card;
+    }
+}
+
+let cardHolderGenerator = cardHolder();
+const card1 = cardHolderGenerator.next();
+console.log(card1)
+// ......
+// ......відбуваються якісь дії з гравцями
+// ......достаємо ще одну карту
+const card2 = cardHolderGenerator.next();
+console.log(card2.value)
+// ......
+// ......відбуваються якісь дії з гравцями
+// ......достаємо ще одну карту
+
+const card3 = cardHolderGenerator.next();
+console.log(card3.value)
+
+// в функції необхідно поставити (*) це означає що функція є генератор
+//...36 Є масив карт
+// 43  ітеруємо масив
+// 44  будемо доставати кожну карту
+// 48 викликаємо функцію
+// 49 присвоюємо змінну
+// 50 викликаємо змінну
+
+// 54,55 викликаємо функцію, присвоюємо змінну, викликаємо змінну
+
+// 60,61 ті ж дії       роздаємо карти
+
+
+
+
+
+</script>
+
+</body>
+</html>
