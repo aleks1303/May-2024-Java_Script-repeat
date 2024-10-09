@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Новий синтаксис об'єктів та Деструктуризація</title>
+</head>
+<body>
+
+<script>
+
+    // let name = 'Norman';
+    // let age = 30;
+    // let user = {
+    //     name,
+    //     age,
+    //     foo(){
+    //         console.log(this)
+    //
+    //     }
+    // }
+    // console.log(user)
+    // user.foo()
+
+//     Деструктуризація
+//     Розбираємо на складові частини та перетворюємо на окремі змінні
+
+// let user = {
+//     name: 'Norman',
+//     age: 31,
+//     foo(){
+//         console.log('foo')
+//
+//     },
+//     };
+//
+// // З user можна брати те, що необхідно name або age aбо функція
+// let{age, name} = user;
+//     console.log(name, age);
+//     console.log(age)
+
+
+//     Приклад
+
+//     Приходить об'єкт де є багато різних характеристик і одна з них вам потрібна
+
+    // function asd({name, status}){
+    //     console.log(name, status)
+    // }
+    // asd({age:32, name:'Lina', status:true})
+
+
+
+
+    // Є можливість переназвати змінні
+
+    //  а якщо з'являються ще змінні з об'єктами і такими ж назвами характеристик
+    // треба провести деструктуризацію
+    // let name = 'Norman';
+    // let age = 30;
+    // let user = {
+    //     name,
+    //     age,
+    //     foo(){
+    //         console.log(this)
+    //
+    //     },
+    //     // з'являється змінна wife
+    //     wife: {
+    //         name: 'Anna',
+    //         age: 28
+    //     }
+    // }
+    //
+    // console.log(user)
+    // user.foo()
+    // let {name:userName, age:userAge, wife:{name:wifeName}, wife:{age:wifeAge}, wife} = user
+    // console.log(name, userName, userAge, wifeName, wifeAge, wife)
+
+
+
+
+//     Робота з масивами
+//  та як пропустити число , , пропустити між комами
+//     let [a, ,b] = [11, 22, 33]
+//     console.log(a, b)
+
+
+    // Поєднання деструктуризації масивів та об'єктів
+
+    let users = [
+        {name:'Maria', age: 23, status:false},
+        {name:'Max', age: 34, status:true},
+        {name:'Mile', age: 50, status:true},
+        {name:'Alex', age: 16, status:false},
+        {name:'Oleg', age: 12, status:true},
+        {name:'Nike', age: 56, status:false},
+        {name:'Sony', age: 23, status:false},
+        {name:'Kiril', age: 45, status:true},
+        {name:'Roman', age: 31, status:true},
+        {name:'Norman', age: 21, status:false},
+        {name:'Julia', age: 28, status:true}
+    ];
+
+
+   let [user1, user2] = users
+    let {name, age, status} = user1
+    console.log(user1)
+    console.log(user2)
+
+
+</script>
+
+</body>
+</html>
