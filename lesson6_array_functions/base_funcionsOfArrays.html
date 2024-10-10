@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Базові функції масивів</title>
+</head>
+<body>
+
+<script>
+
+    let arr = []
+    console.log(Array.isArray(arr)) /* перевірка чи це є масив*/
+
+    arr.push('Add 1 to the end of the array')
+    arr.push('Add 2 to the end of the array')
+    arr.push('Add 3 to the end of the array')
+    arr.push('Add 4 to the end of the array')
+    arr.push('Add 5 to the end of the array')
+
+
+    console.log(arr.pop()); /*вирізає останній елемент з масиву та передає*/
+
+    // додати на початок масиву
+    console.log(arr.unshift('!!!'));
+    // видалити з початку масиву та повертає елемент
+    console.log(arr.shift());
+    console.log(arr);
+
+// з'єднання елементи масиву між собою
+    let s = arr.join('; -');
+    console.log(s)
+
+// з'єднання декілька масивів між собою
+
+    let nums = [11, 22, 33]
+      let concat = arr.concat(nums);
+    console.log(concat)
+
+
+//     reverse перевертає масив
+    console.log(nums.reverse());
+
+//     вирізати елементи з масиву по index
+    console.log(concat)
+    // вирізаємо з 0 по 4 index но змінну concat залишив цілою
+    let slice = concat.slice(0, 4);
+    console.log(slice)
+    console.log(concat)
+
+    // вирізає з 0 index, кількість: 2 елементи й забирає зі змінної concat два елементи
+    // створює новий масив
+    // додаємо на початок нові елементи після 2 в масив concat
+    let splice = concat.splice(0, 2, 'this is ...', 'what is it...');
+    console.log(splice)
+    console.log(concat)
+
+//     вирізати елемент з масиву по index (4 index, 1 - кількість)
+
+    console.log(concat.splice(concat.indexOf(4), 1));
+
+
+//     перевірка наявності того чи іншого елементу в масиві
+    console.log(concat.includes('this is ...'));
+
+
+</script>
+
+
+</body>
+</html>

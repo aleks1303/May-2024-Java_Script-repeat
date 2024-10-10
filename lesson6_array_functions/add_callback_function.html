@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Додаткове по callback функції</title>
+</head>
+<body>
+
+<script>
+
+function filter(arr, predicate) {
+let exitArr = []
+    if(predicate === 'парні числа'){
+        for (const item of arr) {
+            if (item%2 === 0) {
+                exitArr.push(item)
+            }
+        }
+    }
+    if(predicate === 'непарні числа'){
+        for (const item of arr) {
+            if (item%2 !== 0) {
+                exitArr.push(item)
+            }
+        }
+    }
+    return exitArr
+}
+
+// якщо треба парні числа і не парні
+// необхідно далі продовжувати шукати
+// знову писати умови і виводити непарні
+console.log(filter([11, 22, 33, 44, 55, 66], 'парні числа'));
+console.log(filter([11, 22, 33, 44, 55, 66], 'непарні числа'));
+
+// Висновок: ця функція сприймає масив чисел
+// а якщо там буде масив об'єктів тоді такий код працювати не буде
+
+
+
+// Для цього необхідна функція callback
+
+function filter1(arr, callback) {
+    let mass = []
+    for (const item of arr) {
+        if ( callback (item)){
+            mass.push(item)
+        }
+
+    } return mass
+}
+
+console.log(filter1([11, 22, 33, 44, 55, 66, 77, 88,],
+    (item) => item %2 === 0));
+console.log(filter1([33, 44, 22, 11, 323, 232, 454, 44, 333],
+    (item) => item % 2 !== 0));
+
+
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
+console.log(filter1(users, (user) => user.age > 30 && user.name.length === 4 ));
+console.log(filter1(users, function (user) {
+    return user.age > 30;
+}));
+
+
+
+function filter2 (users, callback) {
+    let addUserName = []
+    for (const item of users) {
+        if (callback(item)){
+            addUserName.push(item)
+        }
+    }return addUserName
+}
+
+console.log(filter2(users, (user) => user.name === 'anya'));
+</script>
+
+</body>
+</html>

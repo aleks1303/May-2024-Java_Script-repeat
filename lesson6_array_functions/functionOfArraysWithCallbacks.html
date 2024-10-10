@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Функції масивів з колбеками</title>
+</head>
+<body>
+
+<script>
+
+    let users = [
+        {name: 'vasya', age: 31, status: false},
+        {name: 'petya', age: 30, status: true},
+        {name: 'kolya', age: 29, status: true},
+        {name: 'olya', age: 28, status: false},
+        {name: 'max', age: 30, status: true},
+        {name: 'anya', age: 31, status: false},
+        {name: 'oleg', age: 28, status: false},
+        {name: 'andrey', age: 29, status: true},
+        {name: 'masha', age: 30, status: true},
+        {name: 'olya', age: 31, status: false},
+        {name: 'max', age: 31, status: true}
+    ];
+
+    // вимагає аргумент, пуста функція дає помилку
+    // forEach викликає функцію та ітерує його передаючи аргументи
+    // які треба виконати
+    // forEach виконає щось для елементів які знаходяться в масиві
+    users.forEach(function (value, index){
+        console.log(value, index)
+    });
+
+//     альтернатива такого коду є стрілочна функція
+    console.log(' ')
+    users.forEach((value, index) => console.log(value, index))
+
+    console.log(' ')
+    console.log(' ')
+
+
+// Фільтрація
+
+    // виводимо кому за 30 років
+    let filterUsers = users.filter(function (value) {
+        return value.age > 30
+    });
+    console.log(filterUsers)
+
+    // альтернатива коду
+    let filter = users.filter(value => value.age>30);
+    console.log(filter)
+    // при чому масив users залишається не зміненим
+    // нам повертається новий масив
+
+
+
+//     Map - мапувати об'єкт який приходить до якогось нового об'єкта
+
+    /*let mapUsers = users.map((value, index) => {
+        return {
+            name: value.name,
+            age: value.age,
+            status:value.status,
+            id:index + 1
+        }
+
+    });
+    console.log(mapUsers)
+*/
+
+    // це коротший завис
+    let mapUsers = users.map((value, index) => {
+        // тут використовується ...value як spread ( мазати, розмазуємо)
+        return {...value, id: index + 1}
+    });
+    console.log(mapUsers)
+
+
+//     так виглядає все через стрілочну функція
+
+    console.log(users.map((value, index) => {
+        return {id: index + 1, name: value.name, age: value.age, status: value.status}
+    }));
+
+    // таким чином ми створюємо який новий об'єкт де є всі попередні характеристики
+// і додаткова + одна нова хар-ка
+
+
+// find - знаходить перше входження першого елементу по певній умові
+
+    let find = users.find(value => value.name === 'max');
+    console.log(find)
+//     знаходить тільки першого
+
+    // перевіряє чи вірна умова
+    let every = users.every(value => value.status);
+    console.log(every)
+
+    // перевіряє чи (some) якась вірна умова
+    let bar = users.some(value => value.status);
+    console.log(bar)
+
+
+//     Сортування
+
+    // сортування по age
+    let sort = users.sort( (a,b ) => {
+    return a.age - b.age
+    });
+    console.log(sort)
+
+    // сортування по name за алфавітом та (аскікодом, тобто перетворює на числові значення)
+    console.log(users.sort((a, b) => {
+        if (a.name > b.name) {
+            return 1
+        }
+        if (a.name < b.name) {
+            return -1
+        }
+        if (a.name === b.name) {
+            return 0
+        }
+    }));
+
+
+
+//     Зменшувач (reduce)
+//     перебирати наш масив і у випадку певної умови кладемо в один об'єкт,
+//     якщо інше в інший об'єкт
+    let reduce = users.reduce((accumulator, user) => {
+        if(user.age === 31)
+        {accumulator.statT.push(user)
+        } else if (user.age === 28) {
+            accumulator.statF.push(user)}
+        return accumulator
+    }, {statT: [], statF: []});
+// об'єкти куди класти
+
+    console.log(reduce)
+
+    console.log(users) /*залишається незмінний*/
+</script>
+
+</body>
+</html>

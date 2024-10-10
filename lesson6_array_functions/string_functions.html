@@ -12,11 +12,52 @@
 <script>
 
 
-    
+//     let str = 'hello okten'
+//     console.log(str)
+// //     під капотом стрінга сприймається як масив символів
+// //     викликаєм одну букву
+//     console.log(str[0])
+// //     виводимо букву 'h'
 
+//     можна ітерувати
+//     for (const item of str) {
+//         console.log(item)
+//     }
 
+// let s = new String ('object');
+//     console.log(typeof s)
+// // стрінга являється об'єктом
+//
+//
+//
 
+let s = 'hello okten'
 
+// викликаємо методи від об'єкта
+
+// concat - те саме, що конкатинація (додавання) через +
+s.concat('!!!')
+console.log(s)
+
+console.log(s.toUpperCase());
+console.log(s.toLowerCase());
+
+console.log(s.startsWith('h')); /*з якої букви починається*/
+console.log(s.endsWith('n')); /*на яку букву закінчується*/
+
+console.log(s.substring(0, 7)); /*обрізаємо стрінгу*/
+
+console.log(s.indexOf('o')); /*під яким index буква*/
+console.log(s.lastIndexOf('o')); /*з права на ліво */
+console.log(s.indexOf('o', 5)); /*з позиції 5*/
+
+console.log(s.charAt(8)); /*шукає по index*/
+
+console.log(s.replace('e', '!')); /*заміна букви*/
+console.log(s.replaceAll('e', '!')); /*заміна всіх букв*/
+
+let split = s.split(' '); /*розділяє на масив по знаку ( пробіл) split - розподіл*/
+console.log(split)
 
 
 

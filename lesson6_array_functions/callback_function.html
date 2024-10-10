@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Callback функції</title>
+</head>
+<body>
+
+
+<script>
+
+//     function foo(bar){
+//         console.log(bar)
+//     }
+// foo(100)
+
+// function foo(bar){
+//         console.log(bar)
+//     }
+//     foo(100)
+//
+//
+// // function h (){
+// //         return 100
+// // }
+// foo(function (){
+//     return 200
+// }());
+
+// function h (){
+//         return 100
+// }
+
+
+
+function foo(bar){
+    console.log(bar())
+}
+foo(function (){
+    return 200
+});
+// без виклику функції функція foo повертає опис анонімної функції
+// це посилання
+// анонімна функція відпрацьовує в bar, виклик відбувається в bar
+// тобто ми повертаємо виклик в першу функцію
+
+
+
+// Приклад
+
+function calc1 (a, b, action){
+    if(action === '+'){
+        return a + b
+    } else if (action === '-'){
+        return a - b
+    }else if (action === '*'){
+        return a * b
+    } else if (action === '/'){
+        return a / b
+    }
+}
+// може бути багато if і це не зручно
+// використовується callback функції
+
+
+function calc (a, b , callback){
+return callback (a,b)}
+console.log(calc(10, 20, (a, b) => a + b));
+console.log(calc(500, 300, (a, b) => a - b));
+console.log(calc(500, 300, (a, b) => a * b));
+console.log(calc(500, 300, (a, b) => a / b));
+
+
+</script>
+
+</body>
+</html>
