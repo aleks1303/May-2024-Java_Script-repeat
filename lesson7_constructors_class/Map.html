@@ -11,11 +11,81 @@
 
 <script>
 
+<!--    Асоціація - вибудовування асоціацій-->
+// пов'язування одного чогось з чимось
+
+// set під капотом є Map
+
+// map потрібен, щоб робити асоціацію між ключем і значення
+
+// створення map і викликати її
+let map = new Map();
+console.log(map)
+
+// щоб додати в map якусь асоціацію
+map.set(1, 'one')
+map.set(2, 'two')
+map.set(3, 'three')
+console.log(map)
+
+// map дай мені те, то лежить під ключем 1
+console.log(map.get(1));
+
+// щось складніше, асоціація з об'єктами
+// zero асоціація з об'єктом
+
+map.set('zero', {name:'Anna', surname:'Vona', age: 33, hobby:'swimming'})
+console.log(map.get('zero'))
+// можна зробити перше значення об'єктом
+// але такий об'єкт треба шукати по посиланню
+// треба винести у окрему змінну
+let voy = {id:'voy'};
+let zam = {id:'zam'}
+map.set(voy, {name:'Max', surname:'Zarov', age: 45, hobby:'driver'})
+map.set(zam, {name:'Pavel', surname:'Zamkovoy', age: 40, hobby:'musician'})
+// якщо є однакові ключі, то спрацьовує останній,
+// так як він перезаписує останній на новий,
+// тому що ключ може бути тільки унікальним
+map.set(zam, {name:'Pavel', surname:'Zamkovoyф', age: 40, hobby:'musician'})
+console.log(map.get(zam))
+console.log(map.get(voy))
+
+// можете видалити
+// map.delete(zam)
+
+console.log(map)
+
+// можете почистити
+// map.clear()
 
 
+// можете подивитись розмір
+console.log(map.size);
+
+// показати всі ключі
+// але тут з'являється ітератор
+// його можна ітерувати за допомогою генераторів
+// або зробити спочатку масив
+console.log(map.keys());
+
+// зробимо масив
+let from = Array.from(map.keys());
+console.log(from)
 
 
+// витягнути всі значення
+console.log(map.values());
+// зробити масив для того, щоб легше ітерувати
+let from1 = Array.from(map.values());
+console.log(from1)
 
+
+// це може використовуватися для того, щоб зробити наприклад
+// асоціацію між протоколом https і данними які повинні передаватись
+// це для того, щоб не нагружати код і простіше працювати
+// но це коли використовується map на пряму
+
+// він використовується і в інших випадках
 
 </script>
 
