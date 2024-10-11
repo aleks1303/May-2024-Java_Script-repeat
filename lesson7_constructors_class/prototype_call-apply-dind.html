@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Розширення конструкторів через prototype, підміна this через call apply bind</title>
+</head>
+<body>
+
+
+<script>
+
+
+<!--    Поміняти, розширити та додати елементи в конструктор-->
+
+// не має можливості змінити function user, але треба додати характеристику
+// він підтягнути з іншого script або only read
+function User (name, age) {
+this.name = name;
+this.age = age;
+}
+</script>
+<!--для прикладу створимо ще один script, щоб тягнути з нього-->
+
+
+<script>
+<!--    треба додати функцію-->
+    // можна додати вручну першому user
+    // але потім треба бути створювати вручну і іншому
+
+    // приклад
+
+    let user = new User('Norman', 32);
+user.greeting = function (){
+    console.log('hi !')
+}
+console.log(user)
+user.greeting()
+
+// створюємо ще user
+let user1 = new User ('Anna', 32);
+user1.greeting = function (){
+    console.log('hello !!!')
+}
+console.log(user1)
+user1.greeting()
+
+
+// Є декілька варіантів вирішення проблеми
+//
+// 1 варіант
+// Найбільш зручний
+// Prototype
+//
+// звертаємось до User конструктора, а це функція і викликаємо prototype
+// і додаємо функцію greeting яка буде вже в цьому конструкторі
+User.prototype.greeting = function (){
+    return `hello my name is ${this.name}`
+}
+let user2 = new User('Max', 34);
+console.log(user2.greeting())
+let user3 = new User('Anna', 33);
+console.log(user3.greeting())
+
+let user4 = new User('Kiril', 45);
+console.log(user4.greeting());
+
+
+// 2 варіант
+// додаємо функцію в один об'єкт, а потім витягуємо його через apply
+let user5 = new User('Mile', 38);
+// також передаємо в функцію аргумент і викликаємо його як масив вже потім
+user5.greeting = function (msg) {
+    return `${msg} my name is ${this.name}`;
+}
+console.log(user5.greeting(['Good buy']))
+
+let user6 = new User('Sophia', 10);
+console.log(user5.greeting.apply(user6, ['hello']));
+// функцію не викликаємо, а викликаємо функцію apply
+// ця функція дозволяє підмінити контекст this
+// тобто виконай цей greeting на інший об'єкт,
+// тобто на наш, об'єкт user5
+
+// також можна передати аргументи в функцію greeting
+
+let user7 = new User ('Norman', 33);
+console.log(user5.greeting.apply(user7, ['hi']));
+
+
+
+
+let user8 = new User('Kongo', 45);
+user8.creat = function (text, some) {
+    return `${this.name} ${text} was wind and ${some}`
+}
+console.log(user8.creat(['today']));
+
+let user9 = new User ('Anastasia', 39);
+console.log(user8.creat.call(user9,'yesterday', 'hello'));
+
+
+// 3 варіант call
+// він дає можливість передавати скільки завгодно аргументів в функцію
+
+let user10 = new User('Nike', 82);
+console.log(user8.creat.call(user10, 'hello', 'good buy'));
+
+// 4 варіант bind який робить копію
+
+let user11 = new User('Marina', 33);
+// робимо копію
+let creat = user8.creat.bind(user11/*'hello', 'something'*/);
+// під час виклику функціє можна передавати аргументи сюди, а можна як і раніше
+console.log(creat('hello', 'something'))
+
+
+
+
+
+// Самостійна робота
+
+function Car (model, year) {
+    this.model = model;
+    this.year = year;
+}
+
+console.log(new Car('Audi', 2006));
+
+
+
+</script>
+
+<script>
+    Car.prototype.simple = function (text) {
+        return `${text} model ${this.model} doing so ${this.year}`
+    }
+
+   let car = new Car('BMW', 2009);
+    console.log(car.simple('this'));
+
+
+    let car1 = new Car ('Citroen', 2010);
+    car1.sound = function (sound) {
+        return `this model ${this.model} doing so ${sound} it so ${this.year}`
+    }
+   console.log(car1.sound('brbrbr'));
+
+
+    let car2 = new Car('Opel', 2000);
+    console.log(car1.sound.apply(car2,['kh-kh-kh']));
+
+
+</script>
+
+
+</body>
+</html>

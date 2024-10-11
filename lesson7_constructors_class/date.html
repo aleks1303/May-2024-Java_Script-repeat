@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Date</title>
+</head>
+<body>
+
+
+<script>
+
+<!--Date - це об'єкт який зберігає інформацію про якусь певну дату -->
+// це використовується коли співробітники в різних часових поясах
+
+
+// get - це отримати дату
+let now = new Date;
+// теперішній час
+console.log(now)
+
+// рік
+console.log(now.getFullYear())
+
+// місяць ( починається з 0  за index)
+console.log(now.getMonth())
+
+// день
+console.log(now.getDay())
+
+// годин
+console.log(now.getHours())
+
+// хвилин
+console.log(now.getMinutes())
+
+// секунд
+console.log(now.getSeconds())
+
+// мілісекунд
+console.log(now.getMilliseconds())
+
+// кількість мілісекунд починаючи від 1 січня 1970
+// від початку епохи обчислення часу в системі unix
+console.log(now.getTime())
+
+
+// Виведення часу минулого
+
+// по getTime (мілісекунди)
+let date = new Date (1728660225918);
+console.log(date)
+
+let date1 = new Date ('Fri Oct 11 2024 12:30:34');
+console.log(date1)
+
+let date2 = new Date(1984, 2, 13, 9, 50, 23, 23);
+console.log(date2)
+
+console.log(new Date(447144623023));
+
+// set - це змінювати дату ??
+
+console.log(date2.setDate(9));
+
+// створення об'єкту
+let user = {
+    id:1,
+    name:'Anna',
+    bday: new Date(447144623023)
+}
+console.log(user)
+
+</script>
+
+</body>
+</html>

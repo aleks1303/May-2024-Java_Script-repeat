@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Set | Унікальний набір</title>
+</head>
+<body>
+
+<script>
+
+<!--Set - можна помістити як в масив якісь певні значення-->
+// ці значення ніколи не будуть повторюватися
+
+let set = new Set();
+set.add('asd')
+set.add('qwe')
+set.add('zxc')
+set.add('ert')
+set.add('asd')
+set.add('asd')
+set.add('ddf')
+
+console.log(set)
+
+// в Set можна перевірити чи наявний той чи інший об'єкт
+// можна додавати об'єкти
+
+console.log(set.has('asd'));
+
+// можна видаляти
+set.delete('zxc');
+console.log(set)
+
+// подивитись кількість об'єктів
+console.log(set.size);
+
+// ітерувати через forEach
+
+set.forEach(value => console.log(value))
+
+// створити масив
+let from = Array.from(set);
+console.log(from)
+
+// Зробити унікальний масив чисел і не тільки
+
+let set1 = new Set([11,22,33,44,11,55,33,66,]);
+console.log(set1)
+let numbers = Array.from(set1);
+console.log(numbers)
+
+
+
+
+
+</script>
+
+</body>
+</html>

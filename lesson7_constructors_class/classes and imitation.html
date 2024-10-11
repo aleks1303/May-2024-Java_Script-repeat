@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Класи і наслідування</title>
+</head>
+<body>
+
+<script>
+
+<!--    Це цукрова синтаксична конструкція для створення об'єктів-->
+    // Все схоже на конструктори
+
+    class User {
+
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        // функція яка знаходиться в межах class вона називається методом
+        // але це нічого не змінює
+        // функція залишається функцією
+
+        // також в класах існують статичні методи
+        // це дозволяє викликати функцію без екземпляру класу
+        // тобто змінну яка визначає аргументи
+        // можна звернутися до class до функції і викликати її
+
+        // greeting (msg){
+        //     return `${msg}Hello my name is ${this.name}, i am ${this.age} year old`
+        // }
+
+
+        // static
+        // static greeting (msg){
+        //         return `${msg}Hello my name is ${this.name},
+        //         i am ${this.age} year old`
+        // }
+
+
+    //     work метод
+        work(){
+            return `work in process`
+        }
+    }
+
+
+/*//     greeting
+let user = new User('Anna', 29);
+    console.log(user.greeting('ohh '))*/
+
+
+
+// static
+// звертаємось до class.greeting()
+// тут this посилається на class (this стає class)
+// console.log(User.greeting('Hello   '));
+
+
+// якщо далі необхідно створити ще class
+// і в нього будуть такі ж самі назви і додати ще
+// можна взяти логіку іншого class і перенести
+// для цього ставиться слово 'extends', тобто розширення
+// і пишемо який class будемо розширювати
+
+// Приклад
+class Customer extends User{
+
+    constructor(name, age, password) {
+        // super побудований від батьківського елемент
+        // перевірка command click і ми в User
+        // можемо будувати об'єкт
+        super(name, age);
+        this.password = password;
+    }
+    // бере від батька
+    // але можна і зробити свою логіку
+    work() {
+        return super.work();
+    }
+
+    // можна викликати інші методи і викликати їх від імені Customer
+    foobar(){
+
+    }
+}
+// будуємо об'єкт
+let customer = new Customer('Kiril', 34, 'dkkdkdk333333');
+console.log(customer)
+
+// work можна переписати логіку свою
+console.log(customer.work('hello'));
+
+
+
+// як це зробити, тобто наслідування в звичайному конструкторі
+
+// Приклад
+function UserName (name, age){
+    this.name = name;
+    this.age = age;
+}
+
+function Customer1 (name, age, password){
+    // виклик функції
+    // метод apply
+    // this це беремо з UserName і тепер він Customer
+    // так само arguments
+    UserName.apply(this, arguments);
+    this.password = password;
+}
+
+console.log(new Customer('Anna', 34, '33333eedddde3'));
+console.log(new UserName('Anna', 34));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Функції конструктори</title>
+</head>
+<body>
+
+<script>
+
+<!--    Функції конструктори існують, щоб створювати масив з об'єктами та інше-->
+
+// Створення масиву з об'єктами займає багато часу
+// Для цього існують конструктори
+
+// Зазвичай, принйято давати назву такій функції конструктори
+// або класам з Великої букви
+// для того функція відрізнялась від інших тим що вона будує об'єкти
+// функція-конструктор не має return, вона нічого не повертає, а будує об'єкт
+
+
+function User (name, age , status) {
+// створюємо через this
+    this.name = name;
+    this.age = age;
+    this.status = status
+//     шаблон побудований
+}
+// викликаємо функцію і даємо їй аргументи для нового об'єкту
+// закріпляємо за змінною і продовжуємо будувати нові:
+let user1 = new User ('Anna', 32, true);
+let user2 = new User('Max', 45, false);
+let user3 = new User('Ivan', 28, true);
+// виводимо і бачимо результат
+
+console.log(user1)
+console.log(user2)
+console.log(user3)
+
+// якщо в об'єкті повинні бути створені внутрішні об'єкти?
+// для цього існує два варіанти: композиція і агрегація
+
+// 1 варіант
+function User1 (name, age , status, wife) {
+// створюємо через this
+    this.name = name;
+    this.age = age;
+    this.status = status
+//     додаємо об'єкт wife
+    this.wife = wife
+
+    }
+// при виклику додаємо об'єкт
+console.log(new User1('Oleg', 32, true, {name: 'Anna', age: 29, status: true}));
+
+
+
+// 2 варіант
+function User2 (name, age , status, wifeName, wifeAge, wifeStatus) {
+// створюємо через this
+    this.name = name;
+    this.age = age;
+    this.status = status
+//     додаємо об'єкт wife
+    this.wife = {name:wifeName, age:wifeAge, status:wifeStatus}
+
+}
+
+console.log(new User2('Alex', 40, true, 'Marina', 33, true));
+
+
+// також може містити функції
+
+function User3 (name, age , status, wifeName, wifeAge, wifeStatus) {
+// створюємо через this
+    this.name = name;
+    this.age = age;
+    this.status = status
+//     додаємо об'єкт wife
+    this.wife = {name:wifeName, age:wifeAge, status:wifeStatus};
+    this.creating = function (){
+        console.log('hello')
+
+    }
+
+}
+
+console.log(new User3('Alex', 40, true, 'Marina', 33, true));
+</script>
+
+</body>
+</html>
