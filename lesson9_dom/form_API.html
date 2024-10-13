@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form API</title>
+</head>
+<body>
+
+<!--action - потенційна адреса відправки форми -->
+<form action="" name ='f1'>
+    <input type="text" placeholder="username" name="userName">
+    <button>send name</button>
+
+    <hr>
+</form>
+
+<form action="" name ='f2'>
+    <input type="text" placeholder="username" name="userEmail">
+    <button>send your email</button>
+
+</form>
+
+<script>
+
+<!--    Робота з формами-->
+
+// доступитись до форми
+
+console.log(document.forms);
+// до конкретної
+console.log(document.forms['f1']);
+
+// доступ до input
+console.log(document.forms['f1'].userName);
+
+
+// інший варіант
+console.log(document.forms.f2.userEmail);
+
+</script>
+
+
+
+
+</body>
+</html>

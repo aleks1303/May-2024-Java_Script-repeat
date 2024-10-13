@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Маніпуляція DOM елементами</title>
+</head>
+<body>
+<h1>Before</h1>
+<div id="target" som = 'ok'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores assumenda commodi,
+    consectetur delectus, dolore eaque enim eveniet facilis fugiat illum ipsam mollitia nisi nostrum nulla, obcaecati
+    omnis praesentium quas quidem sapiente similique <b>tempora tempore temporibus</b> vero voluptatibus. Aliquid aut, facilis
+    nemo <span>nesciunt pariatur quo similique</span>! Autem beatae earum odio?
+</div>
+<h2>After</h2>
+
+<script>
+
+    document.getElementById('target')
+
+    console.log(target.innerText)
+
+    // міняємо текст
+    // target.innerText = 'okten'
+
+//    міняємо стилі
+   target.style.background = 'yellow';
+
+//     додаємо class
+    target.classList.add('list');
+
+//     знайти class
+    console.log(target.classList.item(0));
+
+//     чи існує class
+    console.log(target.classList.contains('list'));
+
+// якщо class icнує - видалю, якщо немає - додам
+//     використовується з events
+    target.classList.toggle('bar')
+    target.classList.toggle('list')
+
+
+//     витягнути атрибут та інформацію з нього
+    console.log(target.getAttribute('som'));
+    console.log(target.getAttribute('class'));
+    console.log(target.getAttribute('id'));
+    console.log(target.getAttribute('div'));
+
+//     додати атрибут aле target вже не існує
+    target.setAttribute('id', 'know')
+
+// шукати до елемент
+    console.log(know.previousElementSibling);
+
+    // шукати після елемент
+    console.log(know.nextElementSibling);
+
+
+    // повертає html елементи
+    console.log(know.children);
+
+//     повертає вузли
+//     пробіл між вузлами
+    console.log(know.childNodes);
+
+
+//     можна працювати в процесі ітерації якщо є багато div
+//     через ітерацію дістаєм кожний
+//     додаємо класи, текст ....
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

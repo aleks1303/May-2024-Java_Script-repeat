@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Створення елементів</title>
+</head>
+<style>
+    .user{
+        font-size: 35px;
+        color: green;
+    }
+</style>
+<body>
+
+<div class="users"></div>
+
+<script>
+
+let h2 = document.createElement('h2');
+h2.innerText= 'Some title'
+document.body.append(h2)
+
+
+
+let usersDiv = document.getElementsByClassName('users')[0];
+// приймаємо масив
+// знаємо тільки модель даних
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
+for (const user of users) {
+    let div = document.createElement('div');
+    div.classList.add('user')
+    div.innerText = user.name
+    usersDiv.append(div)
+}
+
+
+
+</script>
+
+</body>
+</html>
