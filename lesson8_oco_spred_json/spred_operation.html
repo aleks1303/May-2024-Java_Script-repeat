@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spred оператор</title>
+</head>
+<body>
+
+<script>
+
+<!--    За допомогою оператора Spred ми можемо копіювати один об'єкт в інший-->
+
+// як скопіювати один об'єкт в інший з тими ж даними,
+// але щоб переший об'єкт не змінювався
+// тому що об'єкти є силочними типами даних
+// змінюєш один - змінюється і інший
+
+// це копії з однаковим посилання
+let user ={
+    name:'Anna',
+    age:32
+};
+let user1 = user
+
+console.log(user1)
+console.log(user === user1);
+// .....................
+
+
+// це spred оператор і це різні об'єкти і посилання
+let userCopy = {...user}
+console.log(userCopy === user);
+
+// з userCopy робимо що завгодно
+userCopy.age = 29;
+console.log(userCopy);
+
+
+// spred можна копіювати масиви
+
+let num = [11,22,33,44,55]
+let num1 = [...num]
+
+num1.push(66,77,88,99)
+console.log(num)
+console.log(num1);
+console.log(num === num1)
+
+
+</script>
+
+</body>
+</html>

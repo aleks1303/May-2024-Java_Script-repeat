@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototyping</title>
+</head>
+<body>
+
+<script>
+
+<!--    Інструмент за допомогою якого можна замінити prototype на основі якого він побудований-->
+
+    let base = {
+        id:1,
+        name: 'Anna'
+    }
+
+//     робимо прототип об'єкту
+//     це прототип і відображається як прототип
+//     об'єкт характеристик не має
+//     від бере за основу характеристики об'єкт base
+let copyBase = Object.create(base);
+    copyBase.surname ='Kiril'
+    console.log(copyBase)
+
+
+// функція яка дозволяє подивитись чи це характеристики саме цього об'єкту
+//     id це не його власність, це власність base
+    console.log(copyBase.hasOwnProperty('id'));
+
+    // додали характеристику, тепер це його власність
+
+    // в prototype все залишається
+    console.log(copyBase.hasOwnProperty('surname'));
+    copyBase.id = 1;
+    console.log(copyBase)
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

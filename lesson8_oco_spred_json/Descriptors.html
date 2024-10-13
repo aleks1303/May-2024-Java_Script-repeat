@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Descriptors</title>
+</head>
+<body>
+
+<script>
+
+<!--    Це інформація для співбесіди-->
+// В загальному ця інформація не використовується
+
+// Дескриптори (опис)
+// описує як об'єкт буде виглядати стосовно своїх характеристик
+// флаги характеристик
+
+let user = {
+    firstName:'Norman',
+    lastName:'Joke'
+}
+
+console.log(user)
+// можна визначати і перевизначати характеристики
+// за допомогою цього інструменту можна зробити поле
+// - невидимим
+// - не здатним до ітерації
+// - тощо
+
+
+Object.defineProperty(
+    // в якому об'єкті
+    user,
+    // додаємо поле
+    'id',
+    {
+        // додаємо значення
+        value:1000,
+    //     забороняємо перевизначення
+        writable:false,
+        // не видимо до ітерації
+        enumerable:false,
+        // дозволяємо в наступному виклику функції можна змінювати
+        // якщо false - ні
+        configurable:true
+    }
+)
+// перевизначаємо
+user.id = 200
+// не працює
+
+console.log(user)
+
+
+
+
+</script>
+
+</body>
+</html>

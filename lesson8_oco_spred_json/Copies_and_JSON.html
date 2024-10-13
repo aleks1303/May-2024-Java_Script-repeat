@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Поверхнева та глибока копії та JSON</title>
+</head>
+<body>
+
+<script>
+
+<!--    Глибока копія-->
+
+// spred поверхнева копія,
+// тому що skills являється об'єктом і посилання однакові
+
+let user = {
+    name: 'Anna',
+    skills:['html', 'css', 'js'],
+    greeting(){}
+}
+
+// якщо додавати в userCopy skills елементи,
+// то вони додаються в skills user також
+userCopy = {...user}
+userCopy.skills.push('Java', 'MongoDB')
+
+
+console.log(user)
+console.log(userCopy)
+console.log(user === userCopy)
+console.log(user.skills === userCopy.skills)
+
+
+// є функція structuredClone
+// але в широкому використанні не доступна
+
+
+
+// Використовуємо для глибокої копії JSON
+// JSON.stringify() - перетворює все на стрінгу
+
+
+let a = JSON.stringify(user)
+console.log(a)
+
+// перетворює зі стрінги на об'єкт
+// передаємо в нову змінну
+// але повністю різні з різними посиланнями
+let b = JSON.parse(a)
+console.log(b)
+console.log(b.skills === a.skills)
+console.log(b === a)
+
+
+// якщо додали функцію в user вона через JSON не передається,
+// тому що JSON це спосіб передачі інформації,
+// а не поведінки
+// будь-яка функція це поведінка (логіка)
+
+
+
+
+// Є ще один спосіб, але поверхневий, як spred -
+// це object.assign
+
+let assign = Object.assign({}, user)
+console.log(assign)
+console.log(user)
+console.log(assign === user)
+
+// skills залишається одним посиланням
+console.log(assign.skills === user.skills)
+
+
+</script>
+
+</body>
+</html>
