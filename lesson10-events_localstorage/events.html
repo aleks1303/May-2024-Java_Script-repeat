@@ -7,14 +7,148 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Події</title>
 </head>
+
+<style>
+    #target{
+        width: 200px;
+        height: 200px;
+        background-color: silver;
+
+    }
+
+    
+</style>
 <body>
+
+
+<div id="target"></div>
+<form action="" id="f1">
+    <input id="i1" name="username">
+    <button>send</button>
+</form>
+
+
+<form action="" id="f2">
+    <input type="text" id="i2" name="lastname">
+    <button>send</button>
+</form>
+
 
 <script>
 
+<!-- Event - комунікація клієнта з вашим сайтом -->
+
+// перезавантаження
+// клік
+// миша
+
+let target = document.getElementById('target');
+target.onclick = function (ev){
+    console.log('click');
+    // вся інформація про подію (свідок події)
+    console.log(ev)
+    let r = ev.clientY;
+    let g = ev.clientX;
+    let b = ev.clientX;
+
+    this.style.background = `rgb ${r} ${g} ${b}`
+}
 
 
+// подія, вона спрацьовує під час користування миші по об'єкту
+//     target.onmousemove = function (ev){
+//     console.log('move')
+//     console.log(ev.clientX, ev.clientY)
+//     let r = ev.clientY;
+//     let g = ev.clientX;
+//     let b = ev.clientX;
+//
+//     this.style.background = `rgb ${r} ${g} ${b}`
+// }
 
 
+// можна перевизначити подію
+// але це не завжди зручно
+target.onclick = function (){
+    console.log('not click')
+}
+
+// як зробити так, щоб події додавались
+// додати подію, но без префікса on
+// в такому випадку не використовувати стрілочні функції
+target.addEventListener('click', function (){
+    console.log('click')
+})
+
+// подія - заводити мишу в елемент
+target.addEventListener('mouseover', function (){
+    console.log('over')
+})
+
+// виводжу мишу
+target.addEventListener('mouseout', function (){
+    console.log('out')
+})
+
+target.addEventListener('mouseleave', function (){
+    console.log('leave')
+})
+
+// зчитування інформації під час впровадження
+let i1 = document.getElementById('i1');
+i1.oninput = function (){
+    target.innerText = this.value;
+};
+
+
+// робота з формою
+// відправка за адресою
+let f1 = document.forms.f1;
+f1.onsubmit = function (ev){
+    // заборона перезавантаження
+    ev.preventDefault()
+    console.log('hello')
+
+//     збираємо інформацію з input
+   let user = {name: this.username.value}
+    console.log(user)
+}
+
+let f2 = document.forms.f2;
+f2.onsubmit = function (ev){
+    ev.preventDefault()
+    console.log('this is cat')
+    let lastname = {name: this.lastname.value}
+    console.log(lastname)
+
+}
+
+
+// трекати стан вашого документу
+// чи завантажилось вікно в якому працюєте
+window.onload = function (){
+    console.log('load')
+}
+
+
+// при завантаженні іде
+// спочатку interactive - комунікація
+// потім - complete - готовність
+// в кінці завантаження - load
+
+// таким чином можна подавати інформацію на екран
+
+// змінює параметр readystate
+document.onreadystatechange = function (){
+    if (document.readyState === 'interactive'){
+        document.body.innerText = 'Loading start ...'
+    }
+    if(document.readyState === 'complete'){
+        document.body.innerText = 'Loading compete...'
+    }
+
+    console.log(document.readyState)
+}
 
 </script>
 

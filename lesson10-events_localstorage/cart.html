@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart || Кошик </title>
+</head>
+<body>
+<div id="cart"></div>
+
+<script>
+
+    let cartDiv = document.getElementById('cart');
+
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    for (const item of cart) {
+        let product = document.createElement('div');
+
+        let h2 = document.createElement('h2');
+        h2.innerText = `${item.title} ${item.price} UAH`
+
+
+
+        product.append(h2)
+        cartDiv.append(product)
+
+
+    }
+
+
+</script>
+
+</body>
+</html>

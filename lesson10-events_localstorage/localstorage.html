@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Localstorage</title>
+</head>
+<body>
+
+<script>
+
+<!-- Локальне сховище-->
+// Прив'язується до певного ресурсу (сайту)
+// дозволяє зберегти інформацію
+
+// localStorage.setItem('asd', '123')
+
+let item = localStorage.getItem('asd');
+console.log(item)
+// localStorage.clear()
+
+// треба передавати через JSON
+localStorage.setItem('user', JSON.stringify({id:1, name:'Anna'}));
+
+
+// додати в об'єкт нові характеристики неможлива
+// необхідно достати перетворити через JSON в об'єкт
+// змінити, знову перетворити в стрінгу, а потім відправити
+let user = localStorage.getItem('user');
+console.log(user)
+let userParse = JSON.parse(user);
+console.log(userParse);
+userParse.age = 31
+console.log(userParse)
+
+localStorage.setItem('user1',JSON.stringify(userParse) )
+
+
+// Приклад
+
+// let users = [
+//     {name: 'vasya', age: 31, status: false},
+//     {name: 'petya', age: 30, status: true},
+//     {name: 'kolya', age: 29, status: true},
+//     {name: 'olya', age: 28, status: false},
+//     {name: 'max', age: 30, status: true},
+//     {name: 'anya', age: 31, status: false},
+//     {name: 'oleg', age: 28, status: false},
+//     {name: 'andrey', age: 29, status: true},
+//     {name: 'masha', age: 30, status: true},
+//     {name: 'olya', age: 31, status: false},
+//     {name: 'max', age: 31, status: true}
+// ];
+//
+// localStorage.setItem('users', JSON.stringify(users))
+
+
+let item1 = localStorage.getItem('users');
+console.log(item1);
+let users = JSON.parse(item1);
+console.log(users)
+users.push({})
+console.log(users);
+
+localStorage.setItem('users', JSON.stringify(users))
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
