@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>URL</title>
+</head>
+<body>
+
+<script>
+
+<!--    URL - це адреса-->
+
+// поділяється на
+// протокол
+// домен
+// розташування файлу
+// тощо
+
+// витягуємо пости певного користувача
+// як виводити користувача без того, щоб вводити його самостійно
+
+    // створити нову url
+let url = new URL('https://jsonplaceholder.typicode.com/posts');
+url.searchParams.set('userId', 8)
+
+    // таким чином можна додавати параметри до пошуку в адресі
+url.searchParams.set('asd', 'djdjdjjj')
+    // також можна забирати параметри
+console.log(url.searchParams.get('asd'));
+
+console.log(url.searchParams.values());
+fetch(url)
+        .then(value => value.json())
+        .then(value => console.log(value))
+
+
+</script>
+
+</body>
+</html>

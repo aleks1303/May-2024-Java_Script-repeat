@@ -11,10 +11,47 @@
 
 <script>
 
+    // обговорення як використовувати API
 
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response) => response.json() )
+        .then(value =>{
+                for (const {name, username, email} of value) {
+                    document.write(`<div>${name} ${username} ${email}</div>`)
+                }
+            }
+            // можна зробити ітерація
+            // будувати DOM
+            // виводи на екран
 
+           )
 
+    // ? - ставиться після end point і вказує ліміт
+    // & - після ставиться, щоб вказати скільки skip - тобто пропустити
+    // щоб самому не прописувати всі ці параметри
+    // можна поставити це на button with events
+    fetch('https://dummyjson.com/products?limit=10')
+        .then(res => res.json())
+        .then( value => {
+            console.log(value)
 
+           let {products} = value
+            for (const {id, brand, price, thumbnail} of products) {
+                document.write(`<p>${id}__${brand} ${price}</p>`)
+                document.write(`<img src="${thumbnail}">`)
+
+            }
+        });
+    fetch('https://dummyjson.com/products/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            title: 'BMW Pencil',
+            /* other product data */
+        })
+    })
+        .then(res => res.json())
+        .then(console.log);
 
 </script>
 
