@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async await функції</title>
+</head>
+<body>
+
+<script>
+
+<!--як працювати коли function має fetch запит-->
+
+// це асинхронна функція
+// можна пакувати асинхронні виклики у функції і працювати в середині
+// цих функцій
+
+// це для того, щоб поки здійснюється fetch запит, функція почекала
+// потім поклала в змінну і працювати можна вже з змінною
+
+async function foo () {
+    let users = await fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response) => response.json());
+    console.log(users)
+
+    // кажемо що ми почекаємо поки запит здійсниться, а потім покладемо в змінну
+    // для цього використовуємо слово await
+    let posts = await fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(value => value.json());
+    console.log(posts)
+}
+foo()
+
+</script>
+
+</body>
+</html>

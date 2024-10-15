@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Асинхронність та цикл подій event loop</title>
+</head>
+<body>
+
+<script>
+
+
+<!--    ЦЕ називається синхронні операції-->
+    // виконується один за одним
+    // console.log('start')
+    // console.log('start1')
+    // console.log('start2')
+    // console.log('start3')
+    // console.log('start4')
+    // console.log('start5')
+    // console.log('end')
+
+// функції з затримкою
+// 2000 (мс) - 2 секунди
+// можна побудувати dom api, блок побудувати в певному місці
+// коли людина заходе на сайт через 2 секунди вспливає вікно
+
+// використовується, щоб взяти дані з інших місць, api, джерел
+// console.log('start')
+// setTimeout(function (){
+//     console.log('hello')
+// }, 100)
+//
+// console.log('end')
+//
+//
+// console.log('1')
+//
+// setTimeout(function (){
+//     console.log('h1')
+// }, 5000)
+//
+// setTimeout(function (){
+//     console.log('h2')
+// }, 1000)
+//
+// console.log('2')
+
+
+// для того, щоб асинхронні і синхронні операції працювали разом
+// треба поміщати функцію в функцію
+// но в цим не зручно працювати,
+// виходить callback-hell
+
+// setTimeout(function (){
+//     console.log('h1');
+//     setTimeout(function () {
+//         console.log('h2');
+//         setTimeout(function () {
+//             console.log('h3');
+//             setTimeout(function () {
+//                 console.log('h4');
+//                 setTimeout(function () {
+//                     console.log('h5');
+//                     setTimeout(function () {
+//                         console.log('h6');
+//                     },1000)
+//                 },1000)
+//             },1000)
+//         },1000)
+//     },1000)
+// },1000)
+
+
+// Є нюанс
+
+let x = 1
+
+setTimeout(function (){
+    x = 1000
+})
+console.log(x)
+
+// виводить 1
+// тому, що виконується синхронна операцію і виводиться 1
+// потім асинхронна з затримкою 1секунду
+// і вона не виконується, десь є x = 1000, але не в console
+// x = 1000 залишиться в межах асинхронної функції, своя рідна - local
+
+
+</script>
+
+</body>
+</html>
