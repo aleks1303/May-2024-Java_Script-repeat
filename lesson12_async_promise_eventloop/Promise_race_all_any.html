@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise race all any</title>
+</head>
+<body>
+
+<script>
+
+<!--    Витягнути користувача с масивом його постів-->
+// є окремо масив з users
+// є окремо масив з постами цих users
+
+// вся інформація знаходиться на віддалених точках
+// треба збирати інформацію з різних точок
+
+// робимо запит
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => response.json())
+    .then(users => {
+        for (const user of users) {
+           fetch('https://jsonplaceholder.typicode.com/posts?userId='+user.id)
+               .then(value => value.json())
+               .then(postsOfIteratedUser => {
+                   // прив'язуємо до user його пости
+                   user.posts = postsOfIteratedUser
+                   });
+            console.log(user)
+        }
+    })
+
+// з таким кодом не зручно працювати тому, що у кожного post
+// є коментарі, а у коментарях можуть бути фото
+// це перетворюється на callback-hell
+
+
+// що з цим робити
+// клас Promise має метод all
+// цей метод дозволяє передати асинхронні запити чи дії
+
+
+
+
+let users = fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => response.json());
+
+let posts = fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(value => value.json());
+
+// передаємо сюди дві змінні з асинхронними запитами
+// потім виводимо результат
+Promise.all([users,posts]).then(results =>{
+    console.log(results)
+    // let usersArray = results[0];
+    // let postsArray = results[1];
+    // console.log(usersArray)
+    // console.log(postsArray)
+
+//     вивести по іншому
+    let [users, posts] = results
+    for (const user of users) {
+        user.posts = [];
+        for (const post of posts) {
+            if (user.id === post.userId){
+                user.posts.push(post)
+            }
+        }
+    }
+    console.log(users)
+
+})
+
+// race - це перегони, який перший виконається такий і виведеться
+// це для того, щоб використати інформацію з двох джерел
+// якщо server1 ляже, то виконається запит на server2 і навпаки
+promise.race([server1, server2]).then(value => console.log(value))
+
+//які дані перші прийшли такі і отримали
+promise.any([users,posts]).then(value => console.log(value))
+
+
+</script>
+
+</body>
+</html>

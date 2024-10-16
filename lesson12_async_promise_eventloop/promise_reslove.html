@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Проміси resolve</title>
+</head>
+<body>
+
+<script>
+
+<!--Як зробити ланцюг setTimeout-->
+
+// є приклад
+// це callback hell
+// setTimeout(()=>{
+//     let x = 1
+//     console.log(x);
+//     setTimeout(()=>{
+//         x++
+//         console.log(x);
+//         setTimeout(()=>{
+//             x++
+//             console.log(x)
+//         },1000)
+//     },1000)
+// }, 1000)
+
+// є promise - це обгортка як дозволяє легше, спокійніше
+// працювати з подібними речами
+
+// створюємо promise
+// він приймає callback function
+// приймає назву resolve - назва довільна
+// він огортає асинхронну операцію
+new Promise((resolve) => {
+setTimeout(()=>{
+let x = 1
+    console.log(x)
+    resolve(x)
+},1000)
+})
+// щоб не робити callback hell
+// а наступні асинхронні операції треба запровадити
+// викликаємо then з callback function
+// огортаємо у promise і знову викликаємо асинхронну операцію
+// але тут область видимості ламається
+// необхідно прийтяти resolve і він передається з попердньої функції
+// в аргумент x
+    // і потім так далі, але з return new Promise
+    // іначе воно не працює
+    // перший then на другий передає undefined, тобто він закінчує свою роботу
+    .then((x)=>{
+       return new Promise (resolve =>{
+            setTimeout(()=>{
+                x++
+                console.log(x)
+                resolve(x)
+            },1000)
+        })
+    })
+    .then((x)=>{
+       return  new Promise(resolve => {
+            setTimeout(()=>{
+                x++
+                console.log(x)
+                resolve(x)
+            },1000)
+        })
+    })
+    .then(x =>{
+
+        setTimeout(()=>{
+            x++
+            console.log(x)
+        },1000)
+    })
+
+// і так далі але з return new Promise
+// i з передачею аргументу далі - resolve (x)
+
+
+
+</script>
+
+</body>
+</html>

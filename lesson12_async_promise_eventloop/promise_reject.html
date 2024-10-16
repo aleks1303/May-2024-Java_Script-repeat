@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Проміси reject</title>
+</head>
+<body>
+
+<script>
+
+<!--    Продовження роботи з promise-->
+
+    // чому promise може приймати в своїй callback function
+    // в аргументі приймати об'єкт під назвою reject (відхилити)
+    // reject - це також перекидання одного promise на інший
+    // так як resolve, але тоді коли сталась якась помилка
+
+    new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            let x = 1
+            console.log(x)
+            resolve(x)
+        },1000)
+    })
+        // якщо на цьому етапі сталась помилка
+        // як приклад зробимо помилку throw new error
+        .then(value => {
+        return new Promise ((resolve, reject) =>{
+            setTimeout(() =>{
+                value ++
+                console.log(value)
+                // щоб відхопити помилку будуємо своєрідний if
+                // якщо помилка є передаємо в reject ('...')
+                // а далі передаємо причину помилки в catch
+                // в іншому випадку спрацьовує resolve і код працює далі
+                // if(true) {
+                //     reject('помилка присутня')
+                // }else{
+                //     resolve(value)
+                // }
+
+                // якщо не сталося помилки false
+                // передає далі на then
+                if(false) {
+                    reject('помилка присутня')
+                }else{
+                    resolve(value)
+                }
+            // якщо вище resolve, код зупиняється resolve не передається
+            },1000)
+        })
+    })
+
+        .then(value => {
+            console.log(value)
+        })
+        // можна поставити catch в кінець коду
+        // якщо помилка стається я підхоплюю і вивожу причину її
+        .catch(reason => {
+            console.log(reason)
+        })
+
+
+// ця інформація більш потрібна для middle
+
+
+
+</script>
+
+</body>
+</html>
